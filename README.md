@@ -2,6 +2,8 @@
 
 A lightweight, Vercel-ready HR copilot demo. It uses fictional employees only and keeps the Gemini API key in a secure Vercel server-side environment variable.
 
+Live demo: https://ai-hr-rho-ten.vercel.app/
+
 ## What It Demonstrates
 
 - Fictional employee directory and profiles
