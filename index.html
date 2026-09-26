@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A lightweight AI HR copilot demo for onboarding, review preparation, and people operations." />
+    <title>AI HR Demo</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d2c42'/%3E%3Cpath d='M8 23 15.5 8h2L24 23h-4l-1.2-3h-5.6L12 23H8Zm6.5-6h3l-1.5-4-1.5 4Z' fill='%23f2c46d'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#overview" aria-label="AI HR Demo home"><span>AI</span><strong>AI HR</strong></a>
+        <p class="demo-label">Fictional data only</p>
+        <nav class="nav" aria-label="Main navigation">
+          <button class="nav-button active" data-view="overview">Overview</button>
+          <button class="nav-button" data-view="people">People</button>
+          <button class="nav-button" data-view="onboarding">Onboarding</button>
+          <button class="nav-button" data-view="reviews">Reviews</button>
+          <button class="nav-button" data-view="ask">Ask AI HR</button>
+        </nav>
+        <p class="sidebar-note">This demo never makes employment decisions.</p>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">People operations</p>
+            <h1 id="pageTitle">Overview</h1>
+          </div>
+          <span class="status"><i></i> Demo workspace</span>
+        </header>
+
+        <section class="view active" id="overview">
+          <div class="welcome-row">
+            <div>
+              <h2>People work, made easier.</h2>
+              <p>Explore a focused HR copilot using fictional employee records and review-safe recommendations.</p>
+            </div>
+            <button class="primary" data-go="ask">Ask AI HR</button>
+          </div>
+          <div class="metrics" aria-label="Demo metrics">
+            <article><strong>8</strong><span>Fictional employees</span></article>
+            <article><strong id="reviewCount">3</strong><span>Saved review drafts</span></article>
+            <article><strong>2</strong><span>Onboarding packs</span></article>
+            <article><strong>100%</strong><span>Human review required</span></article>
+          </div>
+          <div class="two-column">
+            <section class="panel">
+              <div class="panel-heading"><div><p class="eyebrow">Today</p><h3>Focus queue</h3></div></div>
+              <div class="queue-item"><span class="tag positive">Recognition</span><div><strong>Celebrate a delivery milestone</strong><p>Draft a short message for Maya's project contribution.</p></div></div>
+              <div class="queue-item"><span class="tag neutral">Onboarding</span><div><strong>Prepare a first-week plan</strong><p>Generate a role-specific onboarding pack for a new hire.</p></div></div>
+              <div class="queue-item"><span class="tag review">Review</span><div><strong>Document a coaching check-in</strong><p>Capture facts and agree on follow-up support.</p></div></div>
+            </section>
+            <section class="panel">
+              <div class="panel-heading"><div><p class="eyebrow">Demo data</p><h3>Workforce snapshot</h3></div></div>
+              <div class="bar-row"><span>Product</span><div><i style="width: 72%"></i></div><strong>6</strong></div>
+              <div class="bar-row"><span>Operations</span><div><i style="width: 48%"></i></div><strong>4</strong></div>
+              <div class="bar-row"><span>Customer</span><div><i style="width: 61%"></i></div><strong>5</strong></div>
+              <p class="fine-print">Illustrative counts only. This view does not score or rank individuals.</p>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="people" hidden>
+          <div class="section-heading"><div><h2>People directory</h2><p>Select a fictional employee to view their demo profile.</p></div><input id="employeeSearch" type="search" placeholder="Search people" aria-label="Search people" /></div>
+          <div class="people-layout">
+            <div class="directory" id="employeeList" aria-label="Employee list"></div>
+            <article class="profile panel" id="employeeProfile"></article>
+          </div>
+        </section>
+
+        <section class="view" id="onboarding" hidden>
+          <div class="section-heading"><div><h2>Onboarding pack</h2><p>Create a practical first-week plan in seconds.</p></div></div>
+          <div class="form-layout">
+            <form class="panel form" id="onboardingForm">
+              <label>New hire<input name="name" required placeholder="e.g. Jordan Lee" /></label>
+              <label>Role<input name="role" required placeholder="e.g. Product Designer" /></label>
+              <label>Team<input name="team" placeholder="e.g. Product" /></label>
+              <label>Start date<input name="date" type="date" /></label>
+              <label class="full">Core responsibilities<textarea name="responsibilities" required placeholder="Describe the role's most important work."></textarea></label>
+              <button class="primary" type="submit">Create onboarding pack</button>
+            </form>
+            <article class="panel output-card" id="onboardingOutput"><p class="empty-state">Your generated onboarding pack will appear here.</p></article>
+          </div>
+        </section>
+
+        <section class="view" id="reviews" hidden>
+          <div class="section-heading"><div><h2>Review preparation</h2><p>Document facts, support, and next steps. Decisions remain with people.</p></div></div>
+          <div class="form-layout">
+            <form class="panel form" id="reviewForm">
+              <label>Employee<select id="reviewEmployee" name="employee"></select></label>
+              <label>Review outcome<select name="outcome"><option>Meeting expectations</option><option>Exceeding expectations</option><option>Needs support</option></select></label>
+              <label class="full">Documented wins<textarea name="wins" placeholder="What went well? Use observable facts."></textarea></label>
+              <label class="full">Support or follow-up<textarea name="support" placeholder="What support, clarity, or check-in would help next?"></textarea></label>
+              <button class="primary" type="submit">Save review draft</button>
+            </form>
+            <article class="panel output-card" id="reviewOutput"><p class="empty-state">A review draft will appear here. It is not an employment decision.</p></article>
+          </div>
+        </section>
+
+        <section class="view" id="ask" hidden>
+          <div class="section-heading"><div><h2>Ask AI HR</h2><p>Draft routine HR work from a secure server-side Gemini connection.</p></div></div>
+          <div class="ask-layout">
+            <section class="panel ask-form">
+              <label for="aiPrompt">What do you need?</label>
+              <textarea id="aiPrompt" placeholder="Example: Draft a respectful recognition message for a teammate who completed a customer launch."></textarea>
+              <div class="prompt-suggestions">
+                <button type="button" data-prompt="Draft a first-week checklist for a remote customer support specialist.">First-week checklist</button>
+                <button type="button" data-prompt="Create a neutral manager coaching conversation template.">Coaching template</button>
+                <button type="button" data-prompt="Write a short employee recognition message for delivering a project milestone.">Recognition message</button>
+              </div>
+              <button class="primary" id="askButton" type="button">Generate response</button>
+              <p class="fine-print">Do not enter real personal or confidential employee data in this public demo.</p>
+            </section>
+            <article class="panel ai-output" id="aiOutput" aria-live="polite"><p class="empty-state">Your AI response will appear here.</p></article>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

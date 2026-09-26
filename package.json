@@ -1,0 +1,12 @@
+{
+  "name": "ai-hr-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --check api/ai.js && node --check app.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
